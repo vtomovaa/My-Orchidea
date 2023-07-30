@@ -1,2 +1,2 @@
 # Orchid-Store
-My Project Application for SoftUni Angular Exam
+My Project Application for SoftUni Angular Exam.
