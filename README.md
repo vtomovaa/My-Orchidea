@@ -11,8 +11,10 @@ $ ng serve
 
 Which opens the app at http://localhost:4200 in your browser. However it will not work until you don't start the RESTful API server. To start the server you have to be in the project directory and do the following steps:
 
+```
 $ cd ./server
 $ npm install
 $ npm run dev
+```
 
 And the server will start listening on port 3030.
