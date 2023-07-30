@@ -3,9 +3,11 @@ All about orchids app made for educational purpose, created with Angular as fron
 # Setup
 To run this project, in the project directory, you should run:
 
+```
 $ cd ./orchid-store
 $ npm install
 $ ng serve
+```
 
 Which opens the app at http://localhost:4200 in your browser. However it will not work until you don't start the RESTful API server. To start the server you have to be in the project directory and do the following steps:
 
