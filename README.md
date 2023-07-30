@@ -1,5 +1,5 @@
 # My Orchidea
-All about orchids app made for educational purpose, created with Angular as front-End, Node.js as Back-End
+All about orchids app made for educational purpose, created with Angular as Front-End.
 # Setup
 To run this project, in the project directory, you should run:
 
@@ -18,3 +18,7 @@ $ npm run dev
 ```
 
 And the server will start listening on port 3030.
+
+# Server used: Softuni Practice Server
+
+As seen in https://github.com/softuni-practice-server/softuni-practice-server
