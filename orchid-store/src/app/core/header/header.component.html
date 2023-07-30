@@ -1,0 +1,63 @@
+<div class="header">
+    <a routerLink="/">
+        <div id="logo">
+            <img width="75" height="75" src="../../../assets/Logo2.jpg" alt="logo">
+        </div>
+        <!-- <h2>MyOrchidea</h2> -->
+    </a>
+
+    <div class="main">
+        <ul>
+            <li ><a routerLink="/">Home</a></li>
+            <a href="javascript:void(0);" class="icon">
+                <i class="fa fa-bars"></i>
+            </a>
+            <li routerLinkActive="active"><a routerLink="/orchids">All Orchids</a></li>
+            <ng-container *ngIf="isLogged">
+                <li routerLinkActive="active"><a routerLink="/add">Add Orchid</a></li>
+            </ng-container>
+        </ul>
+    </div>
+    <div class="auth">
+        <ul>
+            <div class="dropdown" *ngIf="isLogged">
+                <button class="dropbtn">Profile. . .</button>
+                <div class="dropdown-content">
+                    <a routerLink="/profile">My Orchids</a>
+                    <a routerLink="/favourites-profile">My Favourite Orchid</a>
+                    <a routerLink="/profile-info">Profile Info</a>
+                </div>
+            </div>
+            <ng-container *ngIf="!isLogged">
+                <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+            </ng-container>
+            <ng-container *ngIf="isLogged">
+                <li><a (click)="logout()">Logout</a></li>
+            </ng-container>
+        </ul>
+    </div>
+
+    <div class="mobile" *ngIf="view" (click)="clicking()">
+        <a routerLink="/">Home</a>
+        <a routerLink="/orchids">All Orchids</a>
+        <ng-container *ngIf="isLogged">
+            <a routerLink="/add">Add Orchid</a>
+        </ng-container>
+        <a *ngIf="isLogged" routerLink="/profile">My Orchids</a>
+        <a *ngIf="isLogged" routerLink="/favourites-profile">My Favourite Orchids</a>
+        <a *ngIf="isLogged" routerLink="/profile-info">Profile Info</a>
+    </div>
+    <div class="authorization">
+        <ng-container *ngIf="!isLogged">
+            <a routerLink="/login">Login</a>
+            <a routerLink="/register">Register</a>
+        </ng-container>
+        <ng-container *ngIf="isLogged">
+            <a id="logout" (click)="logout()">Logout</a>
+        </ng-container>
+    </div>
+    <a href="javascript:void(0);" (click)="menuClick()" class="icon">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>

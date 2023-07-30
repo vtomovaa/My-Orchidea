@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="form">
+        <h1>Register</h1>
+        <form [formGroup]="form" method="post" (ngSubmit)="register(avatarImg)">
+            <label>Avatar(optional)</label>
+            <input class="avatar" type="file" #avatarImg name="avatar" (change)="onChange(avatarImg)">
+            <img id="avatar" [src]="file">
+            <label>Username</label>
+            <input type="text" placeholder="Username..." name="username" formControlName="username">
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username shouldn't have more than 10 characters!</p>
+            </ng-container>
+            <label>Email</label>
+            <input type="text" placeholder="Email..." name="email" formControlName="email">
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                <p class="error" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
+            </ng-container>
+            <label>Password</label>
+            <input type="password" placeholder="Password..." name="password" formControlName="password">
+            <ng-container *ngIf="form.get('password')?.touched">
+                <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">Password should have more than 6 characters!</p>
+                <p class="error" *ngIf="form.get('password')?.errors?.['maxlength']">Password should have less 12 characters!</p>
+            </ng-container>
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Repeat Password..." name="rePass" formControlName="rePass">
+            <ng-container *ngIf="form.get('rePass')?.touched">
+                <p class="error" *ngIf="form.get('rePass')?.errors?.['required']">Repeat-password is required!</p>
+                <p class="error" *ngIf="form.get('rePass')?.errors?.['invalidPasswords']">Passwords must be equal!</p>
+            </ng-container>
+            <ng-container *ngIf="errors">
+                <p class="mainerror">{{errors}}</p>
+            </ng-container>
+            <input [disabled]="form.invalid || isLoading" type="submit" value="Register" class="btn">
+        </form>
+        <p class="text">Already have an account? <a routerLink="/login">Login here</a></p>
+        <div class="lds-ellipsis" *ngIf="isLoading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

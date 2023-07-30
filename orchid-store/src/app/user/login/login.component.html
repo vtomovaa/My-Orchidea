@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="form">
+        <h1>Login</h1>
+        <form #form="ngForm" (ngSubmit)="login(form)">
+            <label>Email</label>
+            <input #email="ngModel" ngModel type="text" placeholder="Email..." name="email" pattern="^[a-zA-Z0-9\.-]{4,}@[a-z]+\.[a-z]+$" required>
+            <ng-container *ngIf="email.touched">
+                <p class="error" *ngIf="email.errors?.['required']">Email is required!</p>
+                <p class="error" *ngIf="email.errors?.['email']">Email should be valid!</p>
+                <p class="error" *ngIf="email.errors?.['pattern']">Email should be valid!</p>
+            </ng-container>
+            <label>Password</label>
+            <input #password="ngModel" ngModel type="password" placeholder="Password..." name="password" required minlength="6" maxlength="12">
+            <ng-container *ngIf="password.touched">
+                <p class="error" *ngIf="password.errors?.['required']">Password is required!</p>
+                <p class="error" *ngIf="password.errors?.['minlength']">Password should have more than 6 characters!</p>
+                <p class="error" *ngIf="password.errors?.['maxlength']">Password should have less than 12 characters!</p>
+            </ng-container>
+            <ng-container *ngIf="errors">
+                <p class="mainerror">{{errors}}</p>
+            </ng-container>
+            <input [disabled]="form.invalid || isLoading" type="submit" value="Login" id="loginBtn" class="btn">
+        </form>
+        <p class="text">Don't have an account yet? <a routerLink="/register">Register here</a></p>
+        <div class="lds-ellipsis" *ngIf="isLoading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

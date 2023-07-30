@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    background-image:url(../../../assets/error.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: calc(100vh - 5.4rem);
+}
+.text {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+p {
+    color: white;
+    font-size: 3rem;
+}
+h1 {
+    color: white;
+    font-size: 7rem;
+    font-style: italic;
+}
