@@ -1,6 +1,6 @@
 .container{
     /* background-color: #474E68; */
-    background-image:url('../../../assets/loginanimation.svg');
+    background-image:url('../../../assets/login-registration-animation.svg');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -8,16 +8,16 @@
     position: relative;
 }
 .form {
-    border: 2px solid rgb(32, 32, 32);
+    border: 2px solid #39382fcc;
     border-radius: 1.2rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(32, 32, 32);
+    background-color: #6e6c5a;
     width: 360px;
     color: white;
-    /* box-shadow: 15px 15px 25px rgb(32, 32, 32); */
+    box-shadow: 15px 15px 25px #39382fcc;
 }
 h1 {
     margin-top: 0.7rem;
@@ -55,7 +55,7 @@ input[type="submit"] {
     font-weight: bold;
 }
 input[type="submit"]:hover:enabled {
-    background-color: #ff0000;
+    background-color: #ff008c;
     transform: translate(-50%, -67%);
     transition: 0.2s;
 

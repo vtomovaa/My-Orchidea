@@ -32,7 +32,7 @@ span {
 
 ul li a {
     text-decoration: none;
-    color: white;
+    color: #a8a58a;
     font-weight: bold;
     font-size: 1rem;
 }
@@ -54,7 +54,7 @@ ul li::after {
 }
 
 .active a{
-    border-bottom: 2px solid #f44336;
+    border-bottom: 2px solid #ff008c;
 }
 
 ul li:hover::after {

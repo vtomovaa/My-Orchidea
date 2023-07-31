@@ -1,24 +1,24 @@
 .container{
     /* background-color: #474E68; */
     position: relative;
-    background-image: url('../../../assets/registeranimation.svg');
+    background-image: url('../../../assets/login-registration-animation.svg');
     background-size: cover;
     background-position: center;
     width: 100%;
     height: calc(100vh - 5.4rem);
 }
 .form {
-    border: 2px solid rgb(32, 32, 32);
+    border: 2px solid #39382fcc;
     border-radius: 1.2rem;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(32, 32, 32);
+    background-color: #6e6c5a;
     width: 360px;
     /* height: 500px; */
     color: white;
-    box-shadow: 15px 15px 25px rgb(32, 32, 32);
+    box-shadow: 15px 15px 25px #39382fcc;
 }
 h1 {
     margin-top: 0.7rem;

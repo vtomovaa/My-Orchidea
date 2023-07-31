@@ -4,7 +4,7 @@
 }
 
 .home-container {
-    background-image: url(../../../assets/home4.jpg);
+    background-image: url(../../../assets/home-orchid.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -15,7 +15,7 @@
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: #a8a58a;
     font-size: 1.5rem;
 }
 
