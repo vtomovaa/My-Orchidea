@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(32, 32, 32);
+    background-color: #e0dcb8;
     min-height: 3rem;
 }
 
@@ -47,7 +47,7 @@ ul li::after {
     content: '';
     width: 0%;
     height: 2px;
-    background: #f44336;
+    background: #ff008c;
     display: block;
     margin: auto;
     transition: .4s;

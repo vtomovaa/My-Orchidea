@@ -4,7 +4,7 @@
 }
 
 .home-container {
-    background-image: url(../../../assets/home-orchid2.jpg);
+    background-image: url(../../../assets/home4.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -28,7 +28,7 @@
 
 .container button {
     border-radius: 20px;
-    background-color: #a82d2d;
+    background-color: #e0dcb8;
     border: none;
     color: white;
     font-weight: bold;
@@ -50,7 +50,7 @@
     transition: 0.5s;
 }
 .container button:hover {
-    background-color: #ff0000;
+    background-color: #ff008c;
     margin-bottom: 110px;
 }
 
