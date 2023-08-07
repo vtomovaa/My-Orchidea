@@ -9,7 +9,7 @@ import { appInterceptorProvider } from './app.interceptor';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { OrchidModule } from './orchid/orchid.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     CoreModule,
     BrowserAnimationsModule,
+    OrchidModule,
   ],
   providers: [appInterceptorProvider, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

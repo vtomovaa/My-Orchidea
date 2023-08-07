@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './core/home/home.component';
@@ -12,8 +12,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent,
-
+    component: HomeComponent
   },
   {
     path: 'register',
@@ -40,6 +39,7 @@ const routes: Routes = [
       'guest': false,
     }
   },
+   
   // {
   //   path: '**',
   //   component: ErrorComponent

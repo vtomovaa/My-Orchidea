@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="lds-ellipsis" *ngIf="isLoading">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="form">
+    <h1>Add Orchid</h1>
+    <form #form="ngForm" (ngSubmit)="addOrchid(form, imageUrl)">
+      <label class="formTitle">Make</label>
+      <input class="formInput" #make="ngModel" ngModel type="text" name="make" required minlength="3" maxlength="15">
+      <ng-container *ngIf="make.touched">
+        <p class="error" *ngIf="make.errors?.['required']">Make is required!</p>
+        <p class="error" *ngIf="make.errors?.['maxlength']">You cannot add more than 15 characters!</p>
+        <p class="error" *ngIf="make.errors?.['minlength']">You should have at least 3 characters!</p>
+      </ng-container>
+      <label class="formTitle">Model</label>
+      <input class="formInput" #model="ngModel" ngModel type="text" name="model" required minlength="2" maxlength="10">
+      <ng-container *ngIf="model.touched">
+        <p class="error" *ngIf="model.errors?.['required']">Model is required!</p>
+        <p class="error" *ngIf="model.errors?.['minlength']">You should have at least 2 characters!</p>
+        <p class="error" *ngIf="model.errors?.['maxlength']">You cannot add more than 10 characters!</p>
+      </ng-container>
+      <div class="imageurl">
+        <label for="ImageURL">ImageURL</label>
+        <input type="radio" #image value="ImageURL" id="ImageURL" name="image" checked (change)="onChange(image)">
+        <label for="UploadFile" id="upload">UploadFile</label>
+        <input type="radio" #file value="UploadFile" id="UploadFile" name="image" (change)="onChange(file)">
+      </div>
+      <ng-container class="fileContainer">
+        <input id="file" #imageUrl ngModel type="file" accept="image/*" multiple name="imageUrl" required>
+      </ng-container>
+      <ng-container class="imageUrlContainer">
+        <input #imageUrl="ngModel" class="formInput" ngModel id="url" type="text" required name="imageUrl">
+        <ng-container *ngIf="image.checked">
+          <p class="error" *ngIf="form.value.imageUrl.length < 5">ImageUrl is required!</p>
+          <p class="error" *ngIf="!form.value.imageUrl.includes('http') && form.value.imageUrl.length >= 5">You must
+            give a URL!</p>
+        </ng-container>
+        <!-- pattern="https?:\/\/.+" -->
+        <!-- <ng-container *ngIf="form.value.imageUrl.length > 0">
+                    <p class="error" *ngIf="form.value.imageUrl.length == 0">ImageUrl is required!</p>
+                    <p class="error" *ngIf="!form.value.imageUrl.includes('http')">You must give a URL!</p>
+                </ng-container> -->
+        <!-- <ng-container *ngIf="imageUrl.touched">
+                </ng-container> -->
+      </ng-container>
+      <label class="formTitle">Description</label>
+      <input class="formInput" #description="ngModel" ngModel type="text" name="description" required minlength="10"
+        maxlength="50">
+      <ng-container *ngIf="description.touched">
+        <p class="error" *ngIf="description.errors?.['required']">Description is required!</p>
+        <p class="error" *ngIf="description.errors?.['minlength']">Description should have at least 10
+          characters!</p>
+        <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 50
+          characters!</p>
+      </ng-container>
+      <p class="mainError" *ngIf="errors">{{errors}}</p>
+      <input [disabled]="form.invalid" class="formInput" type="submit" value="Add Orchid">
+    </form>
+  </div>
+</div>

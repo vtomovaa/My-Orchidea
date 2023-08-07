@@ -1,0 +1,103 @@
+<div class="container">
+    <ng-container *ngIf="!inEditMode && orchid">
+        <div class="title">
+            <h1>Details Page</h1>
+        </div>
+        <article class="orchid">
+            <div class="image" *ngIf="!orchid?.imageUrl?.includes('http')">
+                <!-- <input type="submit" value="&#8249;" class="pages left" [disabled]="index == 0" (click)="changeImage('previous')"> -->
+                <a class="pages left" [ngClass]="index == 0 ? 'disabledpage' : ''" (click)="changeImage('previous')">&#8249;</a>
+                <img src={{orchid.orchidImages[index]?.imageUrl}} alt="no-img" *ngIf="orchid.orchidImages[0].imageUrl?.includes('http')">
+                <a class="pages right" [ngClass]="index == orchid.orchidImages.length - 1? 'disabledpage' : ''" (click)="changeImage('next')">&#8250;</a>
+            </div>
+            <div class="image" *ngIf="orchid?.imageUrl?.includes('http')">
+                <img src={{orchid.imageUrl}} alt="no-img" *ngIf="orchid.imageUrl?.includes('http')">
+            </div>
+            <div class="info">
+                <span *ngIf="alreadyFavourite" class="added">&check;</span>
+                <h1>{{orchid.make}} <span>{{orchid.name}}</span></h1>
+                <hr>
+                <h3>Description: <span>{{orchid.description}}</span></h3>
+                <h3>Owner: <span class="ownerSpan" [routerLink]="['/profile-info', orchid.owner.username]">{{orchid.owner.username}}</span></h3>
+                <div class="buttons">
+                    <button routerLink="/orchids">Back</button>
+                    <ng-container *ngIf="isAuthor">
+                        <button (click)="inEditMode = true">Edit</button>
+                        <button (click)="delete()">Delete</button>
+                    </ng-container>
+                    <ng-container *ngIf="!isAuthor && !alreadyFavourite">
+                        <button (click)="addToFavourite()">Add to favourite</button>
+                    </ng-container>
+                    <!-- <button id="added" *ngIf="alreadyFavourite">Added to favourites</button> -->
+                    <button id="remove" *ngIf="alreadyFavourite" (click)="removeFromFavourites()">Remove from
+                        favourites</button>
+                </div>
+                <p class="mainError" *ngIf="errors">{{errors}}</p>
+            </div>
+        </article>
+    </ng-container>
+    
+
+    <ng-container *ngIf="inEditMode">
+        <div class="title">
+            <h1>Edit Orchid</h1>
+        </div>
+        <div class="form">
+            <h1 class="h1">Edit Orchid</h1>
+            <form #form="ngForm" (ngSubmit)="editOrchid(form, imageUrl)">
+                <label class="formTitle">Make</label>
+                <input class="formInput" #make="ngName" ngName type="text" name="make" required minlength="3" maxlength="15" [ngName]="orchid?.make">
+                <ng-container *ngIf="make.touched">
+                    <p class="error" *ngIf="make.errors?.['required']">Make is required!</p>
+                    <p class="error" *ngIf="make.errors?.['maxlength']">You cannot add more than 15 characters!</p>
+                    <p class="error" *ngIf="make.errors?.['minlength']">You should have at least 3 characters!</p>
+                </ng-container>
+                <label class="formTitle">Name</label>
+                <input class="formInput" #name="ngName" ngName type="text" name="name" required minlength="2" maxlength="10" [ngName]="orchid?.name">
+                <ng-container *ngIf="name.touched">
+                    <p class="error" *ngIf="name.errors?.['required']">Name is required!</p>
+                    <p class="error" *ngIf="name.errors?.['minlength']">You should have at least 2 characters!</p>
+                    <p class="error" *ngIf="name.errors?.['maxlength']">You cannot add more than 10 characters!</p>
+                <div class="imageurl">
+                    <label for="ImageURL">ImageURL</label>
+                    <input type="radio" #image value="ImageURL" id="ImageURL" name="image" checked (change)="onChange(image)">
+                    <label for="UploadFile" id="upload">UploadFile</label>
+                    <input type="radio" #file value="UploadFile" id="UploadFile" name="image" (change)="onChange(file)">
+                </div>
+                <ng-container class="fileContainer">
+                    <input id="file" #imageUrl ngName type="file" accept="image/*" multiple name="imageUrl" required>
+                </ng-container>
+                <ng-container class="imageUrlContainer">
+                    <input #imageUrl="ngName" class="formInput" ngName id="url" type="text" name="imageUrl">
+                    <ng-container *ngIf="image.checked">
+                        <p class="error" *ngIf="form.value.imageUrl.length < 5">ImageUrl is required!</p>
+                        <p class="error" *ngIf="!form.value.imageUrl.includes('http') && form.value.imageUrl.length >= 5">You must give a URL!</p>
+                    </ng-container>
+                    <!-- pattern="https?:\/\/.+" -->
+                    <!-- <ng-container *ngIf="form.value.imageUrl.length > 0">
+                        <p class="error" *ngIf="form.value.imageUrl.length == 0">ImageUrl is required!</p>
+                        <p class="error" *ngIf="!form.value.imageUrl.includes('http')">You must give a URL!</p>
+                    </ng-container> -->
+                    <!-- <ng-container *ngIf="imageUrl.touched">
+                    </ng-container> -->
+                <label class="formTitle">Description</label>
+                <input class="formInput" #description="ngName" ngName type="text" name="description" required minlength="10" maxlength="50" [ngName]="orchid?.description">
+                <ng-container *ngIf="description.touched">
+                    <p class="error" *ngIf="description.errors?.['required']">Description is required!</p>
+                    <p class="error" *ngIf="description.errors?.['minlength']">Description should have at least 20
+                        characters!</p>
+                    <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 100
+                        characters!</p>
+                </ng-container>
+                <p class="mainError" *ngIf="errors">{{errors}}</p>
+                <input [disabled]="form.invalid" class="formInput" type="submit" value="Edit Orchid">
+            </form>
+        </div>
+    </ng-container>
+    <div class="lds-ellipsis" *ngIf="isLoading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

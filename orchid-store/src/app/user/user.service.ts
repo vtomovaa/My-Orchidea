@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IUser } from '../shared/interfaces/user';
+import { IOrchid } from '../shared/interfaces/orchid';
 
 import {environment} from '../../environments/environment'
 const API_URL = environment.apiUrl
@@ -52,5 +53,8 @@ export class UserService {
         }
       })
     )
+  }
+  getProfileOrchids(){
+    return this.http.get<IOrchid[]>(`${API_URL}/orchids/myorchids`);
   }
 }
