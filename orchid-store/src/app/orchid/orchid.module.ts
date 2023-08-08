@@ -6,12 +6,14 @@ import { AllOrchidsComponent } from './all-orchids/all-orchids.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddOrchidComponent } from './add-orchid/add-orchid.component';
+import { OrchidDetailsComponent } from './orchid-details/orchid-details.component';
 
 
 @NgModule({
   declarations: [
     AddOrchidComponent,
-    AllOrchidsComponent
+    AllOrchidsComponent,
+    OrchidDetailsComponent
   ],
   imports: [
     CommonModule,

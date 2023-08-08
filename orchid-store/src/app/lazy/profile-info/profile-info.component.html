@@ -1,0 +1,41 @@
+<div class="container">
+    <ng-container>
+        <div class="title">
+            <h1 *ngIf="info">My Profile Info</h1>
+            <h1 *ngIf="isLoading">Loading...</h1>
+        </div>
+        <section>
+            <article class="userSchema" *ngIf="info">
+                <img [src]="currUser.avatarImg" class="avatarImg">
+                <div class="userSchema" @fadeInOutFast>
+                    <h3>Username: <span>{{currUser?.username}}</span></h3>
+                    <h3>Email: <span>{{currUser?.email}}</span></h3>
+                </div>
+            </article>
+            <article class="user" *ngIf="info && geolocationLoaded">
+                <div class="ipAddress">
+                        <img src="{{info?.country_flag}}" alt="no-flag">
+                        {{info?.ip}}
+                </div>
+                <hr>
+                <div class="info" @fadeInOutSlow>
+                    <h3 *ngIf="info?.region">Region: <span>{{info?.region}}</span></h3>
+                    <h3 *ngIf="info?.country">Country: <span>{{info?.country}}</span></h3>
+                    <h3 *ngIf="info?.continent">Continent: <span>{{info?.continent}}</span></h3>
+                    <h3 *ngIf="info?.country_phone">Country Phone: <span>{{info?.country_phone}}</span></h3>
+                    <h3 *ngIf="info?.isp">Internet Provider: <span>{{info?.isp}}</span></h3>
+                    <h3 *ngIf="info?.timezone">Timezone: <span>{{info?.timezone}}</span></h3>
+                    <h3 *ngIf="info?.type">Type: <span>{{info?.type}}</span></h3>
+                    <h3 *ngIf="info?.currency">Currency: <span>{{info?.currency}}</span></h3>
+                </div>
+            </article>
+        </section>
+    </ng-container>
+    <div class="lds-ellipsis" *ngIf="!info">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</div>

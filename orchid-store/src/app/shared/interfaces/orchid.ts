@@ -2,7 +2,7 @@ import { IUser } from "./user";
 
 export interface IOrchid {
     make: string,
-    model: string,
+    type: string,
     name: string,
     imageUrl: string,
     orchidsImages: Array<IObject | any>,

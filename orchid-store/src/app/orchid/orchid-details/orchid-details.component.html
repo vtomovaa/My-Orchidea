@@ -4,19 +4,20 @@
             <h1>Details Page</h1>
         </div>
         <article class="orchid">
-            <div class="image" *ngIf="!orchid?.imageUrl?.includes('http')">
-                <!-- <input type="submit" value="&#8249;" class="pages left" [disabled]="index == 0" (click)="changeImage('previous')"> -->
+            <!-- <div class="image" *ngIf="!orchid?.imageUrl?.includes('http')">
                 <a class="pages left" [ngClass]="index == 0 ? 'disabledpage' : ''" (click)="changeImage('previous')">&#8249;</a>
                 <img src={{orchid.orchidImages[index]?.imageUrl}} alt="no-img" *ngIf="orchid.orchidImages[0].imageUrl?.includes('http')">
                 <a class="pages right" [ngClass]="index == orchid.orchidImages.length - 1? 'disabledpage' : ''" (click)="changeImage('next')">&#8250;</a>
-            </div>
-            <div class="image" *ngIf="orchid?.imageUrl?.includes('http')">
-                <img src={{orchid.imageUrl}} alt="no-img" *ngIf="orchid.imageUrl?.includes('http')">
+            </div> -->
+            <div class="image" *ngIf="orchid?.imageUrl">
+                <img src={{orchid.imageUrl}} alt="no-img" *ngIf="orchid.imageUrl">
             </div>
             <div class="info">
-                <span *ngIf="alreadyFavourite" class="added">&check;</span>
-                <h1>{{orchid.make}} <span>{{orchid.name}}</span></h1>
+                <!-- <span *ngIf="alreadyFavourite" class="added">&check;</span> -->
+                <h1>{{orchid.name}}</h1>
                 <hr>
+                <h3>Type: <span>{{orchid.type}}</span></h3>
+                <h3>ImageUrl: <span>{{orchid.imageUrl}}</span></h3>
                 <h3>Description: <span>{{orchid.description}}</span></h3>
                 <h3>Owner: <span class="ownerSpan" [routerLink]="['/profile-info', orchid.owner.username]">{{orchid.owner.username}}</span></h3>
                 <div class="buttons">
@@ -25,19 +26,19 @@
                         <button (click)="inEditMode = true">Edit</button>
                         <button (click)="delete()">Delete</button>
                     </ng-container>
-                    <ng-container *ngIf="!isAuthor && !alreadyFavourite">
+                    <!-- <ng-container *ngIf="!isAuthor && !alreadyFavourite">
                         <button (click)="addToFavourite()">Add to favourite</button>
-                    </ng-container>
+                    </ng-container> -->
                     <!-- <button id="added" *ngIf="alreadyFavourite">Added to favourites</button> -->
-                    <button id="remove" *ngIf="alreadyFavourite" (click)="removeFromFavourites()">Remove from
-                        favourites</button>
+                    <!-- <button id="remove" *ngIf="alreadyFavourite" (click)="removeFromFavourites()">Remove from
+                        favourites</button> -->
                 </div>
                 <p class="mainError" *ngIf="errors">{{errors}}</p>
             </div>
         </article>
     </ng-container>
     
-
+<!-- 
     <ng-container *ngIf="inEditMode">
         <div class="title">
             <h1>Edit Orchid</h1>
@@ -58,6 +59,7 @@
                     <p class="error" *ngIf="name.errors?.['required']">Name is required!</p>
                     <p class="error" *ngIf="name.errors?.['minlength']">You should have at least 2 characters!</p>
                     <p class="error" *ngIf="name.errors?.['maxlength']">You cannot add more than 10 characters!</p>
+                </ng-container>
                 <div class="imageurl">
                     <label for="ImageURL">ImageURL</label>
                     <input type="radio" #image value="ImageURL" id="ImageURL" name="image" checked (change)="onChange(image)">
@@ -73,13 +75,8 @@
                         <p class="error" *ngIf="form.value.imageUrl.length < 5">ImageUrl is required!</p>
                         <p class="error" *ngIf="!form.value.imageUrl.includes('http') && form.value.imageUrl.length >= 5">You must give a URL!</p>
                     </ng-container>
-                    <!-- pattern="https?:\/\/.+" -->
-                    <!-- <ng-container *ngIf="form.value.imageUrl.length > 0">
-                        <p class="error" *ngIf="form.value.imageUrl.length == 0">ImageUrl is required!</p>
-                        <p class="error" *ngIf="!form.value.imageUrl.includes('http')">You must give a URL!</p>
-                    </ng-container> -->
-                    <!-- <ng-container *ngIf="imageUrl.touched">
-                    </ng-container> -->
+                 
+                </ng-container>
                 <label class="formTitle">Description</label>
                 <input class="formInput" #description="ngName" ngName type="text" name="description" required minlength="10" maxlength="50" [ngName]="orchid?.description">
                 <ng-container *ngIf="description.touched">
@@ -93,7 +90,7 @@
                 <input [disabled]="form.invalid" class="formInput" type="submit" value="Edit Orchid">
             </form>
         </div>
-    </ng-container>
+    </ng-container> -->
     <div class="lds-ellipsis" *ngIf="isLoading">
         <div></div>
         <div></div>

@@ -1,12 +1,25 @@
 <div class="container">
     <div class="title">
-        <h1 *ngIf="orchids?.length > 0">MY ORCHIDS...</h1>
-        <h1 *ngIf="isEmpty && orchids?.length == 0">NO ORCHIDS TO SHOW</h1>
-        <h1 *ngIf="isLoading">Loading...</h1>
+        <h1>{{currUser?.username}}'s Profile Page</h1>
     </div>
-    <section *ngIf="orchids">
-        <ng-container *ngFor="let orchid of orchids | paginate: { itemsPerPage: 10, currentPage: p }">
-            <article>
+    <section class="profile">
+        <article class="user">
+            <div class="userSchema" *ngIf="currUser">
+                <img [src]="currUser.avatarImg" class="avatarImg" alt="no-avatar">
+                <div class="text">
+                    <h3>Username: <span>{{currUser?.username}}</span></h3>
+                    <h3>Email: <span>{{currUser?.email}}</span></h3>
+                </div>
+            </div>
+        </article>
+        <div class="divadded">
+            <h1 class="addedorchids" *ngIf="currUser?.orchids">Added Orchids</h1>
+            <h1 class="addedorchids" *ngIf="!currUser?.orchids">No orchids added!</h1>
+        </div>
+    </section>
+    <section class="orchids" *ngIf="currUser?.orchids">
+        <ng-container *ngFor="let orchid of currUser.orchids | paginate: { itemsPerPage: 5, currentPage: p }">
+           <article>
                 <ng-container *ngIf="orchid?.imageUrl?.includes('http')">
                     <div class="image" *ngIf="orchid.imageUrl.includes('http')"> 
                         <img *ngIf="orchid.imageUrl.includes('res.cloudinary.com')" src={{orchid.imageUrl}} class="uploadedImage" alt="no-img">
@@ -20,7 +33,7 @@
                     </div>
                 </ng-container>
                 <div class="info">
-                    <h1>{{orchid.type}}</h1>
+                    <h1>{{orchid.make}} {{orchid.type}}</h1>
                     <button [routerLink]="['/orchids', orchid._id]">Details</button>
                 </div>
             </article>
@@ -32,7 +45,7 @@
         <div></div>
         <div></div>
     </div>
-    <div class="pagination" *ngIf="orchids?.length > 10">
+    <div class="pagination" *ngIf="currUser?.orchids && currUser?.orchids.length > 5">
         <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

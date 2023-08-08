@@ -15,12 +15,12 @@
         <p class="error" *ngIf="make.errors?.['maxlength']">You cannot add more than 15 characters!</p>
         <p class="error" *ngIf="make.errors?.['minlength']">You should have at least 3 characters!</p>
       </ng-container>
-      <label class="formTitle">Model</label>
-      <input class="formInput" #model="ngModel" ngModel type="text" name="model" required minlength="2" maxlength="10">
-      <ng-container *ngIf="model.touched">
-        <p class="error" *ngIf="model.errors?.['required']">Model is required!</p>
-        <p class="error" *ngIf="model.errors?.['minlength']">You should have at least 2 characters!</p>
-        <p class="error" *ngIf="model.errors?.['maxlength']">You cannot add more than 10 characters!</p>
+      <label class="formTitle">Type</label>
+      <input class="formInput" #type="ngModel" ngModel type="text" name="type" required minlength="2" maxlength="10">
+      <ng-container *ngIf="type.touched">
+        <p class="error" *ngIf="type.errors?.['required']">Type is required!</p>
+        <p class="error" *ngIf="type.errors?.['minlength']">You should have at least 5 characters!</p>
+        <p class="error" *ngIf="type.errors?.['maxlength']">You cannot add more than 50 characters!</p>
       </ng-container>
       <div class="imageurl">
         <label for="ImageURL">ImageURL</label>
@@ -34,8 +34,8 @@
       <ng-container class="imageUrlContainer">
         <input #imageUrl="ngModel" class="formInput" ngModel id="url" type="text" required name="imageUrl">
         <ng-container *ngIf="image.checked">
-          <p class="error" *ngIf="form.value.imageUrl.length < 5">ImageUrl is required!</p>
-          <p class="error" *ngIf="!form.value.imageUrl.includes('http') && form.value.imageUrl.length >= 5">You must
+          <p class="error" *ngIf="!form.value.imageUrl || form.value.imageUrl.length < 5">ImageUrl is required!</p>
+          <p class="error" *ngIf="form.value.imageUrl && !form.value.imageUrl.includes('http') && form.value.imageUrl.length >= 5">You must
             give a URL!</p>
         </ng-container>
         <!-- pattern="https?:\/\/.+" -->
@@ -48,12 +48,12 @@
       </ng-container>
       <label class="formTitle">Description</label>
       <input class="formInput" #description="ngModel" ngModel type="text" name="description" required minlength="10"
-        maxlength="50">
+        maxlength="150">
       <ng-container *ngIf="description.touched">
         <p class="error" *ngIf="description.errors?.['required']">Description is required!</p>
         <p class="error" *ngIf="description.errors?.['minlength']">Description should have at least 10
           characters!</p>
-        <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 50
+        <p class="error" *ngIf="description.errors?.['maxlength']">Description shouldn't have more than 150
           characters!</p>
       </ng-container>
       <p class="mainError" *ngIf="errors">{{errors}}</p>

@@ -57,4 +57,13 @@ export class UserService {
   getProfileOrchids(){
     return this.http.get<IOrchid[]>(`${API_URL}/orchids/myorchids`);
   }
+  getUserIP(){
+    return this.http.get<any>("https://api.ipify.org/?format=json");
+  }
+  getUnknownUserInfo(username: string | null){
+    return this.http.get<IUser>(`${API_URL}/user/${username}`)
+  }
+  getIPaddress(ip: any){
+    return this.http.post(`${API_URL}/geolocation`, {ip})
+  }
 }

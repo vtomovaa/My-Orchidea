@@ -20,10 +20,9 @@ export class AllOrchidsComponent {
     this.orchids = undefined;
     this.orchidService.getAllOrchids().subscribe({
       next: (orchids) => {
-        debugger
-        this.orchids = orchids
-        this.orchidsLength = orchids.length || 0
-        if(orchids.length == 0){
+        this.orchids = orchids;
+        this.orchidsLength = this.orchids.length || 0
+        if(this.orchids.length == 0){
           this.isEmpty = true;
         }
       }

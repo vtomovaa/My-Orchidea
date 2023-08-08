@@ -19,4 +19,9 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
   
+  it('should return Observable', () => {
+    let currUser ;
+    let loggedUser = {email: 'eriktdrv@gmail.com', username: 'todorowwww', accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…E1M30.yUFeQrBWdR0INl4YvwuPTIu0HGmq0RdIA-uAaEEskgg', _id: '638f60d66da3e38a9d9bb507'}
+    service.login({email: 'eriktdrv@gmail.com', password: '123456'}).subscribe((value) => currUser = value)
+  })
 });

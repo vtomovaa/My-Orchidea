@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FavouriteOrchidsComponent } from './favourite-orchids/favourite-orchids.component';
 
 
 
@@ -17,6 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     ProfileComponent,
     ErrorComponent,
+    FavouriteOrchidsComponent
   ],
   imports: [
     NgxPaginationModule,

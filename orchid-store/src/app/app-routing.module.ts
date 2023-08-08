@@ -6,6 +6,7 @@ import { ErrorComponent } from './user/error/error.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
+import { FavouriteOrchidsComponent } from './user/favourite-orchids/favourite-orchids.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,22 @@ const routes: Routes = [
       'guest': false,
     }
   },
+  {
+    path: 'profile-info',
+    loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule),
+    canActivate: [AuthGuard],
+    data: {
+      'guest': false,
+    }
+  },
+  {
+    path: 'favourites-profile',
+    component: FavouriteOrchidsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      'guest': false,
+    }
+  }
    
   // {
   //   path: '**',

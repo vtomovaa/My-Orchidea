@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { OrchidService } from 'src/app/orchid/orchid.service';
+import { IOrchid } from 'src/app/shared/interfaces/orchid';
+import { UserService } from '../user.service';
+
+@Component({
+  selector: 'app-favourite-orchids',
+  templateUrl: './favourite-orchids.component.html',
+  styleUrls: ['./favourite-orchids.component.css']
+})
+export class FavouriteOrchidsComponent {
+  orchids: IOrchid[] | any = null;;
+  isEmpty: boolean = false;
+  isLoading: boolean = false;
+  p: Number | any = 1;
+  constructor(private orchidService: OrchidService) {
+    this.getFavouriteOrchids()
+  }
+  getFavouriteOrchids() {
+    this.isLoading = true;
+    this.orchidService.getFavouriteOrchids().subscribe({
+      next: (value) => {
+        this.isLoading = false;
+        this.orchids = value
+        if (value.length == 0) {
+          this.isEmpty = true;
+        }
+      },
+      error: (err) => console.log(err),
+
+    })
+
+  }
+}

@@ -1,0 +1,164 @@
+.container {
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    min-height: calc(100vh - 5.4rem);
+}
+.orchids {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.orchids .specialform {
+    height: 100px;
+    /* position: relative; */
+}
+.orchids .specialform button {
+    top: 75%;
+    left: 20%;
+}
+.orchids .specialform p {
+    top: 60%;
+}
+.orchids article{
+    margin: 20px;
+    position: relative;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    
+}
+.image {
+    width: 300px;
+    height: 190px;
+}
+img {
+    border-radius: 13px 13px 0px 0px;
+    width: 300px;
+    height: 190px;
+}
+article h1 {
+    font-size: 1rem;
+    padding: 20px;
+}
+p {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+    background-color: #434343;
+    top: 58%;
+    right: 10%;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+}
+.info {
+    /* background-image: linear-gradient(to right, #8360c3, #2ebf91); */
+    height: calc(300px - 190px);
+}
+button { 
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 10px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    transition: 0.2s;
+    top: 86%;
+    font-size: 1.1rem;
+
+}
+.title {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    background-image: linear-gradient(to right, #8e2de2, #4a00e0);;
+    color: white;
+    font-weight: bold;
+}
+.divadded{
+    margin-top: 30px;
+    width: 50%;
+    background-image: linear-gradient(to left, #8e2de2, #4a00e0);;
+    height: 60px;
+    text-align: center;
+    border-radius: 20px;
+}
+.addedorchids{
+    padding-top: 15px;
+    color: white;
+}
+.title h1 {
+    padding-top: 10px;
+}
+.user {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userSchema {
+    border-radius: 15px;
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    background-color: rgb(32, 32, 32);
+    width: 500px;
+    color: white;
+    height: auto;
+}
+.text {
+    text-align: center;
+    padding: 10px;
+}
+.text h3 {
+    margin: 7px;
+    font-size: 1.3rem;
+}
+.avatarImg {
+    position: relative;
+    left: 50%;
+    margin: 0px;
+    padding: 0px;
+    transform: translate(-50%);
+    width: 500px;
+    height: auto;
+    /* height: 300px; */
+    border-radius: 15px 15px 0px 0px;
+}
+span {
+    color: rgb(216, 47, 47);
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+}
+.paginator ::ng-deep .ngx-pagination {
+    font-size: 20px;
+}
+.paginator ::ng-deep .ngx-pagination .current{
+    background-color: rgb(42, 162, 241);
+}
+.uploadedImage {
+    object-fit:cover;
+}
