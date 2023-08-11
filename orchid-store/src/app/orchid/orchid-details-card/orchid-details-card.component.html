@@ -1,0 +1,19 @@
+
+<article>
+    <ng-container *ngIf="orchid?.imageUrl">
+        <div class="image" *ngIf="orchid?.imageUrl"> 
+            <img src={{orchid?.imageUrl}} class="uploadedImage" alt="no-img">
+            <!-- <img *ngIf="!orchids.imageUrl.includes('res.cloudinary.com')" src={{orchids.imageUrl}} alt="no-img"> -->
+        </div>
+    </ng-container>
+    <!-- <ng-container *ngIf="!orchids?.imageUrl?.includes('http')">
+        <div class="image" *ngIf="orchids.orchidsImages[0].imageUrl.includes('http')"> 
+            <img *ngIf="orchids.orchidsImages[0]?.imageUrl.includes('res.cloudinary.com')" src={{orchids.orchidsImages[0].imageUrl}} class="uploadedImage" alt="no-img">
+            <img *ngIf="!orchids.orchidsImages[0].imageUrl.includes('res.cloudinary.com')" src={{orchids.orchidsImages[0]}} alt="no-img">
+        </div>
+    </ng-container> -->
+    <div class="info">
+        <h1>{{orchid?.name}}</h1>
+        <button [routerLink]="['/orchids', orchid?._id]">Details</button>
+    </div>
+</article>

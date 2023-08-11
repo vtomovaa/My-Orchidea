@@ -42,6 +42,7 @@ export class AddOrchidComponent{
       }
       form.value.base64 = base64
     }
+    form.value.owner = "peter@abv.bg"
     this.orchidService.addOrchid(form.value).subscribe({
       next: () => {
         this.isLoading = false;

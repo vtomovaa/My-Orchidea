@@ -52,6 +52,7 @@ const actions = {
             }
         }
         if (responseData !== undefined && responseData[tokens.slice(-1)] !== undefined) {
+           console.log("updating")
             responseData[tokens.slice(-1)] = body;
         }
         return responseData[tokens.slice(-1)];

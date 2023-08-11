@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
+import { OrchidService } from 'src/app/orchid/orchid.service';
 import { IOrchid } from 'src/app/shared/interfaces/orchid';
 import { UserService } from '../user.service';
-import { OrchidService } from 'src/app/orchid/orchid.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-my-orchids',
+  templateUrl: './my-orchids.component.html',
+  styleUrls: ['./my-orchids.component.css']
 })
-export class ProfileComponent {
+export class MyOrchidsComponent {
   orchids: IOrchid[] | any = null;;
   isEmpty: boolean = false;
   isLoading: boolean = false;
   p: Number | any = 1;
-  ip: any
-  
-  constructor(private userService: UserService, private orchidService: OrchidService ) {
-    this.getMyOrchids();
+  constructor(private orchidService: OrchidService, private userService: UserService) {
+    this.getMyOrchids()
   }
   getMyOrchids() {
     this.isLoading = true;
@@ -31,5 +29,6 @@ export class ProfileComponent {
       error: (err) => console.log(err),
 
     })
+
   }
 }

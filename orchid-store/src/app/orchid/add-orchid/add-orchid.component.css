@@ -1,5 +1,5 @@
 .container{
-    background-color: #474E68; 
+    background-color: #a8a58a;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -7,13 +7,13 @@
     height: calc(100vh - 5.4rem);
 }
 .form {
-    border: 2px solid rgb(32, 32, 32);
+    border: 2px solid #4745353a;
     border-radius: 1.2rem;
     position: relative;
     top: 50%;
-    left: 80%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(32, 32, 32);
+    background-color: #a8a58a;
     width: 360px;
     /* height: 600px; */
     color: white;
@@ -61,13 +61,13 @@ input[type="submit"] {
     height: 2rem;
     margin-top: 40px;
     border: none;
-    background-color: #e20404;
+    background-color: #ff008ca2;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
 }
 input[type="submit"]:hover:enabled {
-    background-color: #fd0000;
+    background-color: #ff008c;
     opacity: 0.5;
 }
 /* .error { 

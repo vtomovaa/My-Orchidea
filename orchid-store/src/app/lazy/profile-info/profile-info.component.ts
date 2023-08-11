@@ -44,13 +44,14 @@ export class ProfileInfoComponent {
   geolocationLoaded: boolean = false;
   constructor(private userService: UserService) {
     this.isLoading = true;
-    userService.getUserIP().subscribe({
-      next: (value) => {
-        this.ip = value.ip
-        this.showingInfo()
-      },
-      error: (err) => console.log(err)
-    })
+     this.showingInfo()
+    // userService.getUserIP().subscribe({
+    //   next: (value) => {
+    //     this.ip = value.ip
+    //     this.showingInfo()
+    //   },
+    //   error: (err) => console.log(err)
+    // })
   }
   showingInfo(){
     if(this.ip){

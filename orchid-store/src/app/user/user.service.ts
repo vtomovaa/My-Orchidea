@@ -58,7 +58,7 @@ export class UserService {
     return this.http.get<IOrchid[]>(`${API_URL}/orchids/myorchids`);
   }
   getUserIP(){
-    return this.http.get<any>("https://api.ipify.org/?format=json");
+    return this.http.get<any>("https://api.ipify.org/?format=json", { withCredentials: false });
   }
   getUnknownUserInfo(username: string | null){
     return this.http.get<IUser>(`${API_URL}/user/${username}`)

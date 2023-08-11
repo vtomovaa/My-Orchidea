@@ -13,12 +13,12 @@ export class FavouriteOrchidsComponent {
   isEmpty: boolean = false;
   isLoading: boolean = false;
   p: Number | any = 1;
-  constructor(private orchidService: OrchidService) {
+  constructor(private orchidService: OrchidService, private userService: UserService) {
     this.getFavouriteOrchids()
   }
   getFavouriteOrchids() {
     this.isLoading = true;
-    this.orchidService.getFavouriteOrchids().subscribe({
+    this.orchidService.getFavouriteOrchids(this.userService.user?.email).subscribe({
       next: (value) => {
         this.isLoading = false;
         this.orchids = value

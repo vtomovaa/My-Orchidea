@@ -21,7 +21,7 @@ describe('UserService', () => {
   
   it('should return Observable', () => {
     let currUser ;
-    let loggedUser = {email: 'eriktdrv@gmail.com', username: 'todorowwww', accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…E1M30.yUFeQrBWdR0INl4YvwuPTIu0HGmq0RdIA-uAaEEskgg', _id: '638f60d66da3e38a9d9bb507'}
-    service.login({email: 'eriktdrv@gmail.com', password: '123456'}).subscribe((value) => currUser = value)
+    let loggedUser = {email: 'peter@abv.bg', username: 'asdasd', accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMGRjZGFhNmJhNmE4MTc5NzY5ZWEiLCJlbWFpbCI6InBldGVyQGFidi5iZyIsIm5hbWUiOiJQZXRlciBQYXJrZXIgRU9PRCIsImFkZHJlc3MiOiLQkdCw0L3RgdC60L4sINGD0LsuINCT0LvQsNC30L3QtSAyOSIsInBob25lIjoiKzM1OTg4ODc3NzY2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDQ1Njk1MSwiZXhwIjoxNjkwNTQzMzUxfQ.3m6egmFUik92P20IwXjT3UvL-zTrUWF1CMahw3hM3Hs', _id: '64930dcdaa6ba6a8179769ea'}
+    service.login({email: 'asda@abv.bg', password: '123456'}).subscribe((value) => currUser = value)
   })
 });

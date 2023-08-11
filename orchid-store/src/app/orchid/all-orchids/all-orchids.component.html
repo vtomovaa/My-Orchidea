@@ -5,25 +5,8 @@
         <h1 *ngIf="!orchids">Loading...</h1>
     </div>
     <section *ngIf="orchids">
-        <ng-container *ngFor="let orchids of orchids | paginate: { itemsPerPage: 10, currentPage: p }" >
-            <article>
-                <ng-container *ngIf="orchids?.imageUrl">
-                    <div class="image" *ngIf="orchids.imageUrl"> 
-                        <img src={{orchids.imageUrl}} class="uploadedImage" alt="no-img">
-                        <!-- <img *ngIf="!orchids.imageUrl.includes('res.cloudinary.com')" src={{orchids.imageUrl}} alt="no-img"> -->
-                    </div>
-                </ng-container>
-                <!-- <ng-container *ngIf="!orchids?.imageUrl?.includes('http')">
-                    <div class="image" *ngIf="orchids.orchidsImages[0].imageUrl.includes('http')"> 
-                        <img *ngIf="orchids.orchidsImages[0]?.imageUrl.includes('res.cloudinary.com')" src={{orchids.orchidsImages[0].imageUrl}} class="uploadedImage" alt="no-img">
-                        <img *ngIf="!orchids.orchidsImages[0].imageUrl.includes('res.cloudinary.com')" src={{orchids.orchidsImages[0]}} alt="no-img">
-                    </div>
-                </ng-container> -->
-                <div class="info">
-                    <h1>{{orchids.name}}</h1>
-                    <button [routerLink]="['/orchids', orchids._id]">Details</button>
-                </div>
-            </article>
+        <ng-container *ngFor="let orchid of orchids | paginate: { itemsPerPage: 10, currentPage: p }" >
+            <app-orchid-details-card [orchid]="orchid"></app-orchid-details-card>
             
         </ng-container>
     </section>

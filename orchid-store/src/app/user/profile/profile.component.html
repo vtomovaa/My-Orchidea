@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title">
-        <h1 *ngIf="orchids?.length > 0">MY ORCHIDS...</h1>
+        <h1 *ngIf="orchids?.length > 0">MY ORCHIDS</h1>
         <h1 *ngIf="isEmpty && orchids?.length == 0">NO ORCHIDS TO SHOW</h1>
         <h1 *ngIf="isLoading">Loading...</h1>
     </div>
@@ -33,6 +33,6 @@
         <div></div>
     </div>
     <div class="pagination" *ngIf="orchids?.length > 10">
-        <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
+       <pagination-controls class="paginator" (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

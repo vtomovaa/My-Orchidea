@@ -65,8 +65,8 @@ ul li:hover::after {
     cursor: pointer;
 }
 .dropbtn {
-    background-color: rgb(32, 32, 32);
-    color: white;
+    background-color: #e0dcb8;
+    color: #a8a58a;
     padding: 16px;
     font-weight: bold;
     font-size: 1rem;
@@ -111,7 +111,7 @@ ul li:hover::after {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #e04b4b;
+    background-color: #ff008c;
 }
 
 

@@ -8,8 +8,8 @@ export interface IOrchid {
     orchidsImages: Array<IObject | any>,
     description: string,
     _id: string,
-    owner: IUser,
-    addedBy: IUser[],
+    owner: string,
+    addedBy: string[],
     isUrl: boolean,
 }
 interface IObject {

@@ -17,6 +17,7 @@ export class OrchidDetailsComponent {
   token: string | null = localStorage.getItem('token')
   isAuthor: boolean = false;
   errors: Object | undefined;
+  alreadyFavourite: boolean = false;
   index: any = 0;
   isLoading: boolean = false;
   constructor(private orchidService: OrchidService, private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) {
@@ -29,13 +30,14 @@ export class OrchidDetailsComponent {
     this.orchidService.getOneOrchid(id).subscribe({
       next: (orchid) => {
         this.orchid = orchid
-        //this.alreadyFavourite = orchid.addedBy.some((user) => user.username == this.userService.user?.username)
+        this.alreadyFavourite = orchid.addedBy.some((email) => email == this.userService.user?.email)
         this.isLoading = false
-        // if(this.userService.user?._id == orchid.owner._id){
-        //   this.isAuthor = true
-        // }else {
-        //   this.isAuthor = false;
-        // }
+
+        if(this.userService.user && this.userService.user?.email == orchid.owner){
+          this.isAuthor = true
+        }else {
+          this.isAuthor = false;
+        }
       },
       error: (err) => {
         this.errors = handleError(err.error?.error)
@@ -45,9 +47,9 @@ export class OrchidDetailsComponent {
   }
   
   delete(){
-    // if(this.userService.user?._id != this.orchid?.owner._id || !this.token){
-    //   this.router.navigate(['**'])
-    // }
+    if(this.userService.user?.email != this.orchid?.owner || !this.token){
+      this.router.navigate(['**'])
+    }
     const id = this.orchid?._id;
     this.orchidService.deleteOrchid(id).subscribe({
       next: () => this.router.navigate(['/orchids']),
@@ -56,32 +58,37 @@ export class OrchidDetailsComponent {
       }
     })
   }
-  // addToFavourite(){
-  //   let id = this.orchid?._id
-  //   let isLogged = this.userService.isLogged
-  //   if(!isLogged){
-  //     this.router.navigate(['login'])
-  //   }else {
-  //     this.orchidService.addToFavourite(id).subscribe({
-  //       next: () => {
-  //         this.alreadyFavourite = true;
-  //       }
-  //     })
-  //   }
-  // }
-  // removeFromFavourites(){
-  //   let id = this.orchid?._id;
-  //   let isLogged = this.userService.isLogged
-  //   if(!isLogged){
-  //     this.router.navigate(['login'])
-  //   }else {
-  //     this.orchidService.removeFromFavourites(id).subscribe({
-  //       next: () => {
-  //         this.alreadyFavourite = false;
-  //       }
-  //     })
-  //   }
-  // }
+  addToFavourite(){
+    let id = this.orchid?._id
+    let isLogged = this.userService.isLogged
+    if(!isLogged){
+      this.router.navigate(['login'])
+    }else {
+      if (!this.orchid || !this.userService.user || !this.userService.user?.email) return
+      this.orchid.addedBy.push(this.userService.user.email)
+      this.orchidService.addToFavourite(this.orchid).subscribe({
+        next: () => {
+          this.alreadyFavourite = true;
+        }
+      })
+    }
+  }
+  removeFromFavourites(){
+    let id = this.orchid?._id;
+    let isLogged = this.userService.isLogged
+    if(!isLogged){
+      this.router.navigate(['login'])
+    }else {
+      if (!this.orchid || !this.userService.user || !this.userService.user?.email) return 
+      this.orchid.addedBy = this.orchid.addedBy.filter(item => item !== this.userService.user?.email)
+
+      this.orchidService.removeFromFavourites(this.orchid).subscribe({
+        next: () => {
+          this.alreadyFavourite = false;
+        }
+      })
+    }
+  }
   changeImage(how: string){
     let length: any = this.orchid?.orchidsImages.length
     if(how == 'previous' && this.index > 0){
@@ -135,11 +142,14 @@ export class OrchidDetailsComponent {
       }
       form.value.base64 = base64
     }
+
+    form.value.owner = this.orchid?.owner
     this.orchidService.editOrchid(id, form.value).subscribe({
       next: (orchid) => {
         this.isLoading = false
         this.orchid = orchid
         this.inEditMode = false;
+        this.isAuthor = true
       },
       error: (err) => {
         this.errors = handleError(err.error?.error)

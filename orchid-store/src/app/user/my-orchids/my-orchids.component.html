@@ -1,7 +1,7 @@
 <div class="container">
     <div class="title">
-        <h1 *ngIf="orchids?.length > 0">MY FAVOURITE ORCHIDS</h1>
-        <h1 *ngIf="isEmpty && orchids?.length == 0">NO FAVOURITE ORCHIDS ADDED</h1>
+        <h1 *ngIf="orchids?.length > 0">MY ORCHIDS</h1>
+        <h1 *ngIf="isEmpty && orchids?.length == 0">NO ORCHIDS ADDED</h1>
         <h1 *ngIf="isLoading">Loading...</h1>
     </div>
     <section *ngIf="orchids">

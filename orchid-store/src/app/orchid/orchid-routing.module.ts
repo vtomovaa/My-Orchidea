@@ -4,7 +4,7 @@ import { AuthGuard } from "../core/guards/auth.guard";
 import { ErrorComponent } from "../user/error/error.component";
 import { AllOrchidsComponent } from "./all-orchids/all-orchids.component";
 import { AddOrchidComponent } from "./add-orchid/add-orchid.component";
-import { OrchidDetailsComponent } from "./orchid-details/orchid-details.component";
+import { OrchidDetailsComponent } from "./orchid-details/orchid-details.component"; 
 
 const routes: Routes = [
     {

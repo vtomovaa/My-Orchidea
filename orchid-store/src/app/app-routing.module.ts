@@ -7,6 +7,7 @@ import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { FavouriteOrchidsComponent } from './user/favourite-orchids/favourite-orchids.component';
+import { MyOrchidsComponent } from './user/my-orchids/my-orchids.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,14 @@ const routes: Routes = [
   {
     path: 'favourites-profile',
     component: FavouriteOrchidsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      'guest': false,
+    }
+  },
+  {
+    path: 'my-orchids',
+    component: MyOrchidsComponent,
     canActivate: [AuthGuard],
     data: {
       'guest': false,
