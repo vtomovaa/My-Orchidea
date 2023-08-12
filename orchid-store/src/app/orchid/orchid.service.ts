@@ -98,7 +98,7 @@ export class OrchidService {
             // can create an orchid obj to include the ID
             //  { identifierName, name make etc}
             let orchid = response[key].data;
-            if (orchid.owner == user) {
+            if (orchid.addedBy.indexOf(user) > -1) {
               orchid["_id"] = key;
               orchids.push(orchid);
             }

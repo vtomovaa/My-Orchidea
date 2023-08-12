@@ -22,10 +22,10 @@
             <button (click)="inEditMode = true">Edit</button>
             <button (click)="delete()">Delete</button>
           </ng-container>
-          <ng-container *ngIf="!isAuthor && !alreadyFavourite">
+          <ng-container *ngIf="!alreadyFavourite">
             <button (click)="addToFavourite()">Add to favourite</button>
           </ng-container>
-          <button id="added" *ngIf="alreadyFavourite">Added to favourites</button>
+          <!-- <button id="added" *ngIf="alreadyFavourite">Added to favourites</button> -->
           <button id="remove" *ngIf="alreadyFavourite" (click)="removeFromFavourites()">Remove from
             favourites</button>
         </div>
