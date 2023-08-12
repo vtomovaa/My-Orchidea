@@ -1,5 +1,20 @@
 # My Orchidea
 All about orchids app made for educational purpose, created with Angular as Front-End.
+# Functionalities
+Guest:
+-view All Orchids
+-Login
+-Register
+
+User:
+-Add Orchids
+-Add Orchid to Favourite
+-Remove Orchid from Favourite
+-View Profile Info
+-View own collection "My Orchids"
+-View own collection "My Favourite Orchids"
+-Edit and Delete Orchid
+
 # Setup
 To run this project, in the project directory, you should run:
 
